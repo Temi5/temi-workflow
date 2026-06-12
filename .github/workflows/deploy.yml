@@ -1,0 +1,41 @@
+name: Deploy Temi Calculator with Docker Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build Artifacts and Sync to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # Simulates local Docker verification to fulfill the lab manual framework
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Test Docker Build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false 
+
+      # Executes the direct secure pull into Temi's webroot directory
+      - name: Execute Remote SSH Pull
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            # Clean up files inside public_html safely without breaking shell rules
+            find public_html/ -mindepth 1 -delete
+            
+            # Pull down the latest commit repository structure directly
+            git clone https://github.com/Temi5/VUNA-Calc-striped public_html/
