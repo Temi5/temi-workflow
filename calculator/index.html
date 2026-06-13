@@ -63,22 +63,10 @@
                     <button class="btn btn-equals" onclick="calculateResult()" style="grid-column: span 4;">=</button>
                   </div>
 
-                  <!-- ✅ NEW: S.F. Round Button + Panel (added below grid, no grid changes) -->
-                  <div class="sf-panel-wrapper">
-                    <button class="btn-sf-trigger" onclick="toggleSFPanel()" id="sf-trigger-btn">
-                      S.F. Round ▾
-                    </button>
-                    <div class="sf-panel" id="sf-panel">
-                      <span class="sf-label">Round to significant figures:</span>
-                      <div class="sf-options">
-                        <button class="btn-sf-opt" onclick="roundToSF(1)">1 s.f.</button>
-                        <button class="btn-sf-opt" onclick="roundToSF(2)">2 s.f.</button>
-                        <button class="btn-sf-opt" onclick="roundToSF(3)">3 s.f.</button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- ✅ END S.F. -->
-
+                 <!-- Exponential Button -->
+<div class="btn-grid" style="margin-top: 12px; grid-template-columns: 1fr;">
+  <button class="btn btn-special" onclick="toExponential()">EXP (×10ⁿ)</button>
+</div>
                 </div>
               </div>
             </div>

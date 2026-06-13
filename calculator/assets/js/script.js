@@ -208,10 +208,11 @@ function roundToSF(sf) {
   closeSFPanel();
 }
 
-function toggleSFPanel() {
-  const panel = document.getElementById("sf-panel");
-  const btn   = document.getElementById("sf-trigger-btn");
-  const isOpen = panel.classList.contains("open");
+function toExponential() {
+  const val = parseFloat(document.getElementById('result').value);
+  if (isNaN(val)) return;
+  document.getElementById('result').value = val.toExponential();
+}
 
   if (isOpen) {
     closeSFPanel();
@@ -226,7 +227,7 @@ function toggleSFPanel() {
     btn.classList.add("active");
     setTimeout(() => document.addEventListener("click", outsideSFClick), 0);
   }
-}
+
 
 function closeSFPanel() {
   document.getElementById("sf-panel").classList.remove("open");
