@@ -1,0 +1,140 @@
+/* ================================
+   S.F. Round — Panel & Buttons
+================================ */
+
+.sf-panel-wrapper {
+  position: relative;
+  margin-top: 12px;
+}
+
+.btn-sf-trigger {
+  width: 100%;
+  padding: 10px 16px;
+  background-color: #5a7d6b;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.btn-sf-trigger:hover {
+  background-color: #3f5e4e;
+}
+
+.btn-sf-trigger.active {
+  background-color: #2d4438;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sf-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #dde5e0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.sf-panel.open {
+  display: block;
+}
+
+.sf-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sf-options {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sf-opt {
+  flex: 1;
+  padding: 9px 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: #eef4f1;
+  color: #2d4438;
+  border: 1px solid #c5d9ce;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-sf-opt:hover {
+  background-color: #c8e6d4;
+  border-color: #5a7d6b;
+}
+
+.btn-sf-opt:active {
+  transform: scale(0.96);
+}
+
+/* Flash feedback on display */
+@keyframes sf-flash {
+  0%   { background-color: #c8f0d8; }
+  100% { background-color: transparent; }
+}
+
+.sf-flash {
+  animation: sf-flash 0.5s ease-out;
+}
+
+/* ================================
+   Dark Mode
+================================ */
+body.dark-mode .btn-sf-trigger {
+  background-color: #3f5e4e;
+  border: 1px solid #5a7d6b;
+}
+
+body.dark-mode .btn-sf-trigger:hover,
+body.dark-mode .btn-sf-trigger.active {
+  background-color: #2d4438;
+}
+
+body.dark-mode .sf-panel {
+  background-color: #1e1e1e;
+  border-color: #3a3a3a;
+}
+
+body.dark-mode .sf-label {
+  color: #777;
+}
+
+body.dark-mode .btn-sf-opt {
+  background-color: #2a3d32;
+  color: #c8e6d4;
+  border-color: #3f5e4e;
+}
+
+body.dark-mode .btn-sf-opt:hover {
+  background-color: #1a4d2e;
+  border-color: #5a7d6b;
+}
+
+@keyframes sf-flash-dark {
+  0%   { background-color: #1a4d2e; }
+  100% { background-color: transparent; }
+}
+
+body.dark-mode .sf-flash {
+  animation: sf-flash-dark 0.5s ease-out;
+}

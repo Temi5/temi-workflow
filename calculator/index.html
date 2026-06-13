@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="assets/css/sf.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calculator</title>
@@ -37,38 +38,47 @@
                     <button class="btn btn-light" onclick="bracketToResult('(')">(</button>
                     <button class="btn btn-light" onclick="bracketToResult(')')">)</button>
                     <button class="btn btn-light" onclick="backspace()">←</button>
-
-                    <!-- Row trig -->
                     <button class="btn btn-action" onclick="clearResult()">AC</button>
 
-                    <!-- Row 2 -->
                     <button class="btn btn-light" onclick="appendToResult(7)">7</button>
                     <button class="btn btn-light" onclick="appendToResult(8)">8</button>
                     <button class="btn btn-light" onclick="appendToResult(9)">9</button>
-
-                    <!-- Row 3 -->
                     <button class="btn btn-operator" onclick="operatorToResult('/')">÷</button>
+
                     <button class="btn btn-light" onclick="appendToResult(4)">4</button>
                     <button class="btn btn-light" onclick="appendToResult(5)">5</button>
                     <button class="btn btn-light" onclick="appendToResult(6)">6</button>
-
-                    <!-- Row 4 -->
                     <button class="btn btn-operator" onclick="operatorToResult('*')">×</button>
+
                     <button class="btn btn-light" onclick="appendToResult(1)">1</button>
                     <button class="btn btn-light" onclick="appendToResult(2)">2</button>
                     <button class="btn btn-light" onclick="appendToResult(3)">3</button>
-
-                    <!-- Row 5 -->
                     <button class="btn btn-operator" onclick="operatorToResult('+')">+</button>
+
                     <button class="btn btn-light" onclick="appendToResult('.')">.</button>
                     <button class="btn btn-light" onclick="appendToResult(0)">0</button>
                     <button class="btn btn-operator" onclick="percentToResult('%')">%</button>
-                    
-                    <!-- Row 9 -->
                     <button class="btn btn-operator" onclick="operatorToResult('-')">−</button>
 
                     <button class="btn btn-equals" onclick="calculateResult()" style="grid-column: span 4;">=</button>
                   </div>
+
+                  <!-- ✅ NEW: S.F. Round Button + Panel (added below grid, no grid changes) -->
+                  <div class="sf-panel-wrapper">
+                    <button class="btn-sf-trigger" onclick="toggleSFPanel()" id="sf-trigger-btn">
+                      S.F. Round ▾
+                    </button>
+                    <div class="sf-panel" id="sf-panel">
+                      <span class="sf-label">Round to significant figures:</span>
+                      <div class="sf-options">
+                        <button class="btn-sf-opt" onclick="roundToSF(1)">1 s.f.</button>
+                        <button class="btn-sf-opt" onclick="roundToSF(2)">2 s.f.</button>
+                        <button class="btn-sf-opt" onclick="roundToSF(3)">3 s.f.</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ✅ END S.F. -->
+
                 </div>
               </div>
             </div>
@@ -83,4 +93,3 @@
 </body>
 
 </html>
-

@@ -84,7 +84,6 @@ function clearResult() {
   updateResult();
 }
 
-
 function normalizeExpression(expr) {
   return expr
     .replace(/asin\(/g, "asinDeg(")
@@ -131,9 +130,7 @@ function percentToResult() {
     currentExpression = percentVal.toString();
   }
 
-  // 🔥 ADD THIS LINE
   currentExpression += "*";
-
   updateResult();
 }
 
@@ -142,19 +139,16 @@ function percentToResult() {
 // ------------------------------
 function calculateExpression(expression) {
   try {
-   
     let normalizedExpression = normalizeExpression(expression);
 
-    // 🧠 Replace "ans" with last result automatically
     normalizedExpression = normalizedExpression.replace(
       /\bans\b/gi,
       LAST_RESULT,
     );
 
-    // Calculate result
     let result = eval(normalizedExpression);
     console.log("Calculated result for expression:", expression, "->", result);
- 
+
     if (isNaN(result) || !isFinite(result)) {
       throw new Error();
     }
@@ -164,24 +158,79 @@ function calculateExpression(expression) {
     return "Error";
   }
 }
+
 function calculateResult() {
   if (!currentExpression) return;
-    const display = document.getElementById("result"); 
-    // Calculate result
-    let result = calculateExpression(currentExpression);
-    result = String(result);
+  const display = document.getElementById("result");
 
-    // Save result for future expressions
-    LAST_RESULT = result;
+  let result = calculateExpression(currentExpression);
+  result = String(result);
 
-    // Display normally
-    display.value = result;
+  LAST_RESULT = result;
+  display.value = result;
 
-    currentExpression = result;
-    updateResult();
+  currentExpression = result;
+  updateResult();
 }
-
 
 function updateResult() {
   document.getElementById("result").value = currentExpression || "0";
+}
+
+
+// ===============================
+// 🔢 SIGNIFICANT FIGURES ROUNDING
+// ===============================
+
+function roundToSF(sf) {
+  const display = document.getElementById("result");
+
+  let num;
+  const evaluated = calculateExpression(currentExpression);
+
+  if (evaluated === "Error" || evaluated === undefined) {
+    num = parseFloat(currentExpression);
+  } else {
+    num = parseFloat(evaluated);
+  }
+
+  if (isNaN(num)) return;
+
+  const rounded = parseFloat(num.toPrecision(sf));
+
+  LAST_RESULT = rounded;
+  currentExpression = String(rounded);
+  display.value = currentExpression;
+
+  display.classList.add("sf-flash");
+  setTimeout(() => display.classList.remove("sf-flash"), 500);
+
+  closeSFPanel();
+}
+
+function toggleSFPanel() {
+  const panel = document.getElementById("sf-panel");
+  const btn = document.getElementById("sf-trigger-btn");
+  const isOpen = panel.classList.contains("open");
+
+  if (isOpen) {
+    closeSFPanel();
+  } else {
+    panel.classList.add("open");
+    btn.classList.add("active");
+    setTimeout(() => document.addEventListener("click", outsideSFClick), 0);
+  }
+}
+
+function closeSFPanel() {
+  document.getElementById("sf-panel").classList.remove("open");
+  document.getElementById("sf-trigger-btn").classList.remove("active");
+  document.removeEventListener("click", outsideSFClick);
+}
+
+function outsideSFClick(e) {
+  const wrapper = document.querySelector(".sf-panel-wrapper");
+  if (!wrapper.contains(e.target)) {
+    closeSFPanel();
+  }
 }
