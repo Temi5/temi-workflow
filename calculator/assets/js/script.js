@@ -210,12 +210,18 @@ function roundToSF(sf) {
 
 function toggleSFPanel() {
   const panel = document.getElementById("sf-panel");
-  const btn = document.getElementById("sf-trigger-btn");
+  const btn   = document.getElementById("sf-trigger-btn");
   const isOpen = panel.classList.contains("open");
 
   if (isOpen) {
     closeSFPanel();
   } else {
+    const rect = btn.getBoundingClientRect();         // ← add this
+    panel.style.left   = rect.left   + 'px';          // ← add this
+    panel.style.width  = rect.width  + 'px';          // ← add this
+    panel.style.bottom = (window.innerHeight - rect.top) + 'px'; // ← add this
+    panel.style.top    = 'auto';                      // ← add this
+
     panel.classList.add("open");
     btn.classList.add("active");
     setTimeout(() => document.addEventListener("click", outsideSFClick), 0);
