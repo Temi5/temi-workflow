@@ -801,3 +801,10 @@
  
   /* error state */
   .adc-error { color: #dc3545; font-size: .85rem; margin-top: 6px; display: none; }
+  .calculator-card {
+  overflow: visible;
+}
+
+.card {
+  overflow: visible;
+}
