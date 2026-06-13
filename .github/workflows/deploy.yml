@@ -48,4 +48,4 @@ jobs:
             find public_html/ -mindepth 1 -delete
             
             # Pull down the latest workspace tracking layout for Temi
-            git clone https://github.com/Temi5/VUNA-Calc-striped public_html/
+            git clone https://github.com/Temi5/temi-workflow public_html/
