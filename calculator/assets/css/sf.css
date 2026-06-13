@@ -34,15 +34,16 @@
 .sf-panel {
   display: none;
   position: absolute;
-  top: 100%;
+  bottom: 100%;        /* ← changed from top: 100% */
+  top: auto;           /* ← add this */
   left: 0;
   right: 0;
   background: #fff;
   border: 1px solid #dde5e0;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
+  border-bottom: none;             /* ← changed from border-top: none */
+  border-radius: 10px 10px 0 0;   /* ← rounded on top instead of bottom */
   padding: 12px 14px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.1);  /* ← shadow goes up */
   z-index: 100;
 }
 
