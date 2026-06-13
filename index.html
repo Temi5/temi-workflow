@@ -3,66 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temi's SEN 482 Assignment and love kibg
-
-        hhyyyydesrgdxchgvgkgchffghgfxdtfggfsdtfygjg
-    </title>
+    <title>Temi's SEN 482 Assignment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #307b40, #307b40);
-            margin: 0;
-            padding: 0;
+            background: #1a4d2e;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
+            justify-content: center;
+            padding: 2rem;
         }
-        .container {
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            max-width: 480px;
+            width: 100%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
         }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 999px;
+            background: #e8f5ee;
+            color: #1a4d2e;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #2e7d52;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
         h1 {
-            color: #d15a7c;
-            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 6px;
         }
-        h3 {
+
+        .sub {
+            font-size: 14px;
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 1.25rem 0;
+        }
+
+        .description {
+            font-size: 14px;
             color: #666;
-            margin-bottom: 30px;
+            line-height: 1.7;
+            margin-bottom: 1.75rem;
         }
+
+        .stack {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: #f5f5f5;
+            color: #555;
+            border: 1px solid #eee;
+        }
+
         .btn {
-            display: inline-block;
-            text-decoration: none;
-            background: #d15a7c;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a4d2e;
             color: #fff;
-            padding: 15px 32px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(209, 90, 124, 0.4);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 13px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
         }
+
         .btn:hover {
-            background: #b34665;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(209, 90, 124, 0.6);
+            background: #163f25;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            font-size: 12px;
+            color: #bbb;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="card">
+        <div class="badge">
+            <span class="dot"></span>
+            Live deployment
+        </div>
+
         <h1>SEN 482: CI/CD Project</h1>
-        <h3>Temi — VUNA VPS Deployment</h3>
-        <p style="margin-bottom: 40px; color: #555;">Welcome to my automated deployment environment running securely via an isolated cloud shell architecture built with GitHub Actions.</p>
-        
-        <a href="./calculator/index.html" class="btn">Launch Calculator</a>
+        <p class="sub">Temi — VUNA VPS Deployment</p>
+
+        <hr>
+
+        <p class="description">An automated deployment environment running securely via an isolated cloud shell architecture powered by GitHub Actions.</p>
+
+        <div class="stack">
+            <span class="pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub Actions
+            </span>
+            <span class="pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                VUNA VPS
+            </span>
+            <span class="pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Secure shell
+            </span>
+        </div>
+
+        <a href="./calculator/index.html" class="btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+            Launch calculator
+        </a>
+
+        <p class="footer">SEN 482 · Automated CI/CD Pipeline</p>
     </div>
 
 </body>
